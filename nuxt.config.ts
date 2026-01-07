@@ -1,8 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
-    jwtSecret: process.env.JWT_SECRET || 'chave-secreta-padrao'
+    jwtSecret: process.env.JWT_SECRET || 'chave-secreta-padrao',
+    // Chaves públicas ou configuráveis via .env
+    public: {
+      // O Nuxt mapeia automaticamente NUXT_PUBLIC_UPLOAD_PATH do .env para cá
+      uploadPath: process.env.NUXT_PUBLIC_UPLOAD_PATH || 'public/images'
+    }
   },
+  
   css: [
     'primeicons/primeicons.css' // <--- ESTA LINHA É OBRIGATÓRIA
   ],
