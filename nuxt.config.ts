@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     jwtSecret: process.env.JWT_SECRET || 'chave-secreta-padrao',
     // Chaves públicas ou configuráveis via .env
     public: {
+      siteName: 'paravyomayoga',
       // O Nuxt mapeia automaticamente NUXT_PUBLIC_UPLOAD_PATH do .env para cá
       uploadPath: process.env.NUXT_PUBLIC_UPLOAD_PATH || 'public/images'
     }
