@@ -1,28 +1,31 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// nuxt.config.ts (Satélite Paravyoma)
 export default defineNuxtConfig({
   runtimeConfig: {
+    // 1. Chaves Privadas (Server-side)
+    storagePath: process.env.STORAGE_PATH,
     jwtSecret: process.env.JWT_SECRET || 'chave-secreta-padrao',
-    runtimeConfig: {
-      storagePath: process.env.STORAGE_PATH,
-      public: {
-        siteName: 'paravyomayoga',
-        uploadPath: process.env.NUXT_PUBLIC_UPLOAD_PATH || 'public/images'
-      }
+
+    // 2. Chaves Públicas (Client-side)
+    public: {
+      siteName: 'paravyomayoga',
+      uploadPath: process.env.NUXT_PUBLIC_UPLOAD_PATH || 'public/images'
     }
   },
-  css: [
-    'primeicons/primeicons.css' // <--- ESTA LINHA É OBRIGATÓRIA
-  ],
+  // ... resto das configurações
+  vite: {
+    server: {
+      allowedHosts: true // Para evitar aquele erro de host que vimos
+    }
+  },
+  css: ['primeicons/primeicons.css'],
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/content', '@nuxt/image', '@primevue/nuxt-module'],
   primevue: {
     options: {
-      ripple: true, // Ativa o efeito de clique (opcional)
+      ripple: true,
       theme: {
-        preset: 'Aura' // Opções: 'Aura', 'Lara' ou 'Nora'
+        preset: 'Aura' 
       }
     }
-  },
-  pages: true
+  }
 })
